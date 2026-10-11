@@ -1,0 +1,860 @@
+/* =========================================================
+   Shivam Furniture — Full Updated style.css
+   Palette: Walnut espresso, warm ivory, sage, brushed brass
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+    --walnut-950: #221812;
+    --walnut-800: #3A2A20;
+    --walnut-600: #6B4B33;
+    --wood-500: #9C6B43;
+    --ivory: #F7F2E9;
+    --ivory-dim: #EDE4D3;
+    --sage: #6E7B5C;
+    --sage-dim: #DDE3D3;
+    --brass: #B08D4F;
+    --ink: #241C16;
+    --ink-soft: #55483C;
+    --radius: 6px;
+    --shadow: 0 8px 24px rgba(34, 24, 18, 0.12);
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    margin: 0;
+    font-family: 'Work Sans', sans-serif;
+    color: var(--ink);
+    background: var(--ivory);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--walnut-950);
+    margin: 0 0 0.5em;
+    line-height: 1.2;
+}
+
+p { margin: 0 0 1em; color: var(--ink-soft); }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+:focus-visible {
+    outline: 2px solid var(--brass);
+    outline-offset: 3px;
+}
+
+.title-underline {
+    width: 56px;
+    height: 3px;
+    background: var(--brass);
+    margin: 10px auto 20px;
+    border-radius: 2px;
+}
+
+/* ---------- Header / Navigation ---------- */
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(247, 242, 233, 0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(34, 24, 18, 0.08);
+}
+
+.nav-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--walnut-950);
+    letter-spacing: 0.01em;
+}
+
+.main-nav .nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li a {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink);
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s var(--ease);
+}
+
+.nav-menu li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--wood-500);
+    transition: width 0.25s var(--ease);
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: var(--wood-500);
+}
+
+.nav-menu li a:hover::after,
+.nav-menu li a.active::after {
+    width: 100%;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--walnut-950);
+    cursor: pointer;
+}
+
+/* ---------- Hero Slider ---------- */
+.hero-slider-section {
+    background: var(--walnut-950);
+    padding: 0;
+}
+
+.slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 520px;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.6s var(--ease);
+}
+
+.slide.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    color: var(--ivory);
+    z-index: 2;
+}
+
+.slide-content h2 {
+    color: var(--ivory);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 12px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.slide-content p {
+    color: #E4D9C8;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    margin-bottom: 24px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 12px 26px;
+    background: var(--brass);
+    color: var(--ivory);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border-radius: var(--radius);
+    transition: all 0.25s var(--ease);
+}
+
+.hero-btn:hover {
+    background: var(--wood-500);
+    transform: translateY(-2px);
+}
+
+.btn-outline-hero {
+    background: transparent;
+    border: 2px solid var(--ivory);
+    color: var(--ivory);
+}
+
+.btn-outline-hero:hover {
+    background: var(--ivory);
+    color: var(--walnut-950);
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(34, 24, 18, 0.6);
+    color: var(--ivory);
+    border: 1px solid rgba(247, 242, 233, 0.3);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.2s var(--ease);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+.prev:hover, .next:hover { background: var(--brass); }
+
+/* ---------- Auto-Running Marquee ---------- */
+.ecira-marquee-container {
+    overflow: hidden;
+    background: var(--walnut-800);
+    color: var(--ivory);
+    padding: 12px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    white-space: nowrap;
+}
+
+.ecira-marquee-content {
+    display: inline-flex;
+    gap: 40px;
+    animation: marquee-scroll 25s linear infinite;
+}
+
+.ecira-marquee-content span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ivory);
+    letter-spacing: 0.03em;
+}
+
+@keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ---------- About Brief Section ---------- */
+.about-brief-section {
+    padding: 56px 24px;
+    background: var(--ivory);
+}
+
+.about-container {
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* ---------- Features / Why Choose Us ---------- */
+.features-section {
+    background: var(--ivory-dim);
+    padding: 56px 24px;
+}
+
+.info-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.info-box {
+    background: var(--ivory);
+    padding: 28px 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-top: 3px solid var(--brass);
+}
+
+.info-box h4 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    color: var(--walnut-950);
+}
+
+.info-box p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ---------- Services Section ---------- */
+.bg-light-section {
+    background: var(--ivory);
+}
+
+.service-section {
+    padding: 56px 24px;
+}
+
+.services-card-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.service-card {
+    background: var(--ivory-dim);
+    padding: 30px 24px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(34, 24, 18, 0.08);
+    transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.service-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 0.92rem;
+    margin: 0;
+}
+
+/* ---------- Work Process ---------- */
+.process-section {
+    background: var(--walnut-950);
+    color: var(--ivory);
+    padding: 64px 24px;
+}
+
+.process-section .gallery-header h2 {
+    color: var(--ivory);
+}
+
+.process-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+}
+
+.process-step {
+    background: var(--walnut-800);
+    padding: 32px 24px;
+    border-radius: var(--radius);
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.step-num {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--brass);
+    margin-bottom: 12px;
+}
+
+.process-step h4 {
+    color: var(--ivory);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.process-step p {
+    color: #D8CBBB;
+    font-size: 0.88rem;
+    margin: 0;
+}
+
+/* ---------- Calculator Banner Callout ---------- */
+.calc-banner-section {
+    background: linear-gradient(135deg, var(--wood-500) 0%, var(--walnut-800) 100%);
+    color: var(--ivory);
+    padding: 56px 24px;
+    text-align: center;
+}
+
+.calc-banner-content {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.calc-banner-content h2 {
+    color: var(--ivory);
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+}
+
+.calc-banner-content p {
+    color: #F0E6D8;
+    font-size: 1.05rem;
+    margin-bottom: 24px;
+}
+
+.calc-banner-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--brass);
+    color: var(--ivory);
+    font-weight: 700;
+    border-radius: var(--radius);
+    letter-spacing: 0.03em;
+    transition: background 0.2s var(--ease);
+}
+
+.calc-banner-btn:hover {
+    background: var(--ivory);
+    color: var(--walnut-950);
+}
+
+/* ---------- Testimonials ---------- */
+.testimonials-section {
+    padding: 56px 24px;
+    background: var(--ivory);
+}
+
+.testimonial-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.testimonial-card {
+    background: var(--ivory-dim);
+    padding: 28px 24px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-card p {
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 16px;
+}
+
+.testimonial-card h5 {
+    color: var(--wood-500);
+    font-size: 0.95rem;
+    margin: 0;
+    text-align: right;
+}
+
+/* ---------- Address Section ---------- */
+.address-section {
+    background: var(--walnut-950);
+    color: var(--ivory);
+    text-align: center;
+    padding: 36px 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.address-container h3 {
+    color: var(--ivory);
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.address-container p {
+    color: #D8CBBB;
+    margin: 4px 0;
+    font-size: 0.95rem;
+}
+
+.address-container a {
+    color: var(--brass);
+    text-decoration: underline;
+}
+
+/* ---------- Side Quick Buttons ---------- */
+.side-enquiry-btns {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.enq-btn {
+    background: var(--walnut-800);
+    color: var(--ivory);
+    border: none;
+    padding: 12px 14px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: var(--radius) 0 0 var(--radius);
+    box-shadow: -2px 4px 10px rgba(0,0,0,0.2);
+    transition: background 0.2s var(--ease);
+}
+
+.enq-btn:hover { background: var(--brass); }
+.quote-btn { background: var(--wood-500); }
+.quote-btn:hover { background: var(--brass); }
+
+/* ---------- Floating WhatsApp Button ---------- */
+.whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    background-color: #25D366;
+    color: #FFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: transform 0.25s var(--ease);
+}
+
+.whatsapp-float svg {
+    width: 32px;
+    height: 32px;
+    fill: #FFF;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+}
+
+/* ---------- Direct Footer ---------- */
+.main-footer {
+    background: #18110D;
+    color: #BDB0A4;
+    padding: 56px 24px 24px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.footer-col h3 {
+    color: var(--ivory);
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+}
+
+.footer-col h4 {
+    color: var(--brass);
+    font-size: 1.05rem;
+    margin-bottom: 16px;
+}
+
+.footer-col p {
+    color: #BDB0A4;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col ul li a {
+    font-size: 0.9rem;
+    color: #BDB0A4;
+    transition: color 0.2s var(--ease);
+}
+
+.footer-col ul li a:hover {
+    color: var(--brass);
+}
+
+.footer-bottom {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* ---------- Enquiry Popup Overlay ---------- */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(34, 24, 18, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.popup-overlay.active {
+    display: flex;
+}
+
+.popup-content {
+    background: var(--ivory);
+    padding: 36px 28px;
+    border-radius: var(--radius);
+    max-width: 440px;
+    width: 100%;
+    position: relative;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--walnut-950);
+    cursor: pointer;
+}
+
+#formContainer h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#g-form input {
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 14px;
+    border: 1px solid rgba(34,24,18,0.2);
+    border-radius: var(--radius);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    background: #FFF;
+}
+
+#g-form input:focus {
+    border-color: var(--brass);
+    outline: none;
+}
+
+.calc-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--wood-500);
+    color: var(--ivory);
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.2s var(--ease);
+}
+
+.calc-submit-btn:hover {
+    background: var(--brass);
+}
+
+/* ---------- Responsive Adjustments ---------- */
+@media (max-width: 860px) {
+    .main-nav { display: none; }
+    .nav-toggle { display: block; }
+
+    .main-nav.open {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--ivory);
+        box-shadow: var(--shadow);
+        padding: 12px 0;
+    }
+
+    .main-nav.open .nav-menu {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .main-nav.open .nav-menu li a {
+        display: block;
+        padding: 12px 24px;
+    }
+
+    .slider-container {
+        height: 420px;
+    }
+
+    .side-enquiry-btns {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .slider-container {
+        height: 380px;
+    }
+    .slide-content {
+        bottom: 30px;
+    }
+    .prev, .next {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
+    }
+}
+/* =========================================================
+   1. STICKY FILTER TABS (टॉप पर रुकने के लिए)
+   ========================================================= */
+.gallery-filter {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 70px; /* अगर Header Fixed है, तो 70px रखें ताकि मेन्यू के नीचे चिपके */
+    z-index: 999;
+    background-color: #ffffff;
+    padding: 15px 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.filter-btn {
+    padding: 8px 18px;
+    border: 1px solid #dcdcdc;
+    background-color: #f9f9f9;
+    color: #333;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: #000000; /* आपका थीम कलर */
+    color: #ffffff;
+    border-color: #000000;
+}
+
+
+/* =========================================================
+   2. GALLERY GRID & SPACING (फोटो के बीच प्रॉपर गैप)
+   ========================================================= */
+.gallery-grid {
+    padding: 30px 15px;
+}
+
+.grid-container {
+    display: grid;
+    /* मोबाइल और डेस्कटॉप पर रेस्पॉन्सिव ग्रिड */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px; /* इमेजेज को आपस में चिपकने से रोकने के लिए गैप */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================================
+   3. GRID ITEM & IMAGE CAPTION / NAME (फोटो के नीचे नाम दिखाना)
+   ========================================================= */
+.grid-item {
+    position: relative;
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.grid-item img {
+    width: 100%;
+    height: 220px; /* एकसमान ऊंचाई */
+    object-fit: cover;
+    display: block;
+}
+
+/* फोटो का नाम दिखाने वाला टाइटल बार */
+.grid-item-title {
+    padding: 12px 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #222222;
+    background: #ffffff;
+    text-align: center;
+    border-top: 1px solid #eeeeee;
+}
